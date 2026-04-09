@@ -422,51 +422,6 @@ header {
   border: 1px solid rgba(248, 113, 113, 0.7);
 }
 
-.summary-card {
-  display: none;
-  border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: rgba(15, 23, 42, 0.95);
-  padding: 10px;
-  font-size: 0.8rem;
-}
-
-.summary-card.visible {
-  display: block;
-}
-
-.summary-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.summary-item {
-  flex: 1;
-  padding: 6px 8px;
-  border-radius: 12px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(31, 41, 55, 0.9);
-}
-
-.summary-item .label {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-}
-
-.summary-item .value {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.summary-item .good {
-  color: var(--success);
-}
-
-.summary-item .bad {
-  color: var(--danger);
-}
-
 footer {
   margin-top: 14px;
   font-size: 0.75rem;
