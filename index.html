@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phishing or Legit? Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="app-inner">
+      <header>
+        <div class="title-block">
+          <div class="logo-pill">📧</div>
+          <div class="title-text">
+            <h1>
+              Phishing or Legit?
+              <span class="badge">Security Awareness</span>
+            </h1>
+            <p>Read the email, then decide if it’s a phishing scam or a legitimate message.</p>
+          </div>
+        </div>
+        <div class="score-chip">
+          <div class="score-dot"></div>
+          <span>Score: <strong id="scoreDisplay">0</strong></span>
+        </div>
+      </header>
+
+      <div class="layout">
+        <section class="email-panel">
+          <div class="email-panel-inner">
+            <div class="email-toolbar">
+              <div class="toolbar-left">
+                <div class="traffic-dots">
+                  <span class="red"></span>
+                  <span class="yellow"></span>
+                  <span class="green"></span>
+                </div>
+                <span>Inbox • 1 message</span>
+              </div>
+              <div class="toolbar-right">
+                <div class="toolbar-icon">⚑</div>
+                <div class="toolbar-icon">📥</div>
+                <div class="toolbar-icon">⋯</div>
+              </div>
+            </div>
+
+            <div class="email-meta">
+              <div class="email-meta-row">
+                <span class="email-meta-label">From</span>
+                <span class="email-meta-value" id="emailFrom"></span>
+              </div>
+              <div class="email-meta-row">
+                <span class="email-meta-label">To</span>
+                <span class="email-meta-value">you@example.com</span>
+              </div>
+              <div class="email-meta-row">
+                <span class="email-meta-label">Time</span>
+                <span class="email-meta-value" id="emailTime"></span>
+              </div>
+              <div class="email-subject">
+                <span id="emailSubject"></span>
+                <span class="tag" id="emailTag">Training</span>
+              </div>
+            </div>
+
+            <div class="email-body" id="emailBody"></div>
+
+            <div class="email-footer">
+              <span class="icon-row">
+                <span class="icon-pill">📎 1 attachment</span>
+                <span class="icon-pill">🔗 Links inside</span>
+              </span>
+              <span class="icon-row">
+                <span>Spam filter:</span>
+                <span class="icon-pill">Neutral</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side-panel">
+          <div class="pill-row">
+            <div class="pill">
+              <span class="dot"></span>
+              <span>Look for typos, urgency, and strange links.</span>
+            </div>
+            <div class="pill">
+              🔒 <span>Never enter passwords from email links you don’t trust.</span>
+            </div>
+          </div>
+
+          <div class="question-counter">
+            <span>Question <strong id="questionNumber">1</strong> of <strong id="questionTotal">1</strong></span>
+            <span id="legitRatioLabel"></span>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="buttons">
+            <button class="btn btn-primary" id="btnPhishing">⚠️ Phishing Scam</button>
+            <button class="btn" id="btnLegit">✅ Legitimate Email</button>
+            <button class="btn" id="btnNext" style="display:none;">➡️ Next Email</button>
+            <button class="btn" id="btnRestart" style="display:none;">🔁 Restart Quiz</button>
+          </div>
+
+          <div class="feedback" id="feedback">
+            <div class="feedback-icon" id="feedbackIcon">ℹ️</div>
+            <div class="feedback-text">
+              <strong id="feedbackTitle"></strong>
+              <span id="feedbackMessage"></span>
+            </div>
+          </div>
+
+          <div class="summary-card" id="summaryCard">
+            <h2>Session summary</h2>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span class="label">Total questions</span>
+                <span class="value" id="summaryTotal">0</span>
+              </div>
+              <div class="summary-item">
+                <span class="label">Correct answers</span>
+                <span class="value good" id="summaryCorrect">0</span>
+              </div>
+              <div class="summary-item">
+                <span class="label">Accuracy</span>
+                <span class="value" id="summaryAccuracy">0%</span>
+              </div>
+            </div>
+            <div class="summary-footer" id="summaryFooter"></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        <span>Classroom phishing-awareness exercise • Dark mode • GitHub Pages compatible</span>
+        <span>Created for a cybersecurity project</span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
