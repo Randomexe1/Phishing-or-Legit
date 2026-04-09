@@ -119,7 +119,6 @@
             <button class="btn btn-primary" id="btnPhishing">⚠️ Phishing Scam</button>
             <button class="btn" id="btnLegit">✅ Legitimate Email</button>
             <button class="btn" id="btnNext" style="display:none;">➡️ Next Email</button>
-            <button class="btn" id="btnRestart" style="display:none;">🔁 Restart Quiz</button>
           </div>
 
           <div class="feedback" id="feedback">
@@ -129,31 +128,22 @@
               <span id="feedbackMessage"></span>
             </div>
           </div>
-
-          <div class="summary-card" id="summaryCard">
-            <h2>Session summary</h2>
-            <div class="summary-grid">
-              <div class="summary-item">
-                <span class="label">Total questions</span>
-                <span class="value" id="summaryTotal">0</span>
-              </div>
-              <div class="summary-item">
-                <span class="label">Correct answers</span>
-                <span class="value good" id="summaryCorrect">0</span>
-              </div>
-              <div class="summary-item">
-                <span class="label">Accuracy</span>
-                <span class="value" id="summaryAccuracy">0%</span>
-              </div>
-            </div>
-            <div class="summary-footer" id="summaryFooter"></div>
-          </div>
         </aside>
       </div>
 
       <footer>
         <span>A cybersecurity project</span>
       </footer>
+    </div>
+  </div>
+
+  <!-- END SCREEN -->
+  <div id="endScreen" class="end-screen hidden">
+    <div class="end-card">
+      <h1>Quiz Complete!</h1>
+      <p class="end-score">Score: <span id="finalScore"></span></p>
+      <p class="end-accuracy">Accuracy: <span id="finalAccuracy"></span>%</p>
+      <button id="playAgainButton" class="btn btn-primary end-restart">Play Again</button>
     </div>
   </div>
 
