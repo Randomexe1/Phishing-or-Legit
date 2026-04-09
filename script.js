@@ -304,7 +304,6 @@ function showFeedback(isCorrect, explanation) {
   if (currentIndex < totalQuestions - 1) {
     btnNext.style.display = "block";
   } else {
-    // last question → show end screen
     showEndScreen();
   }
 
