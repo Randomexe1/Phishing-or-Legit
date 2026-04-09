@@ -7,7 +7,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app-shell">
+
+  <!-- TITLE SCREEN -->
+  <div id="titleScreen" class="title-screen">
+    <div class="title-card">
+      <div class="title-icon">📧</div>
+      <h1 class="title-main">Phishing or Legit?</h1>
+      <p class="title-sub">A cybersecurity project</p>
+      <p class="title-desc">
+        You will review 20 emails — some legitimate, some phishing attempts.<br>
+        Your goal is to identify which is which. Pay close attention to details.
+      </p>
+      <button id="startButton" class="btn btn-primary title-start">Start Game</button>
+    </div>
+  </div>
+
+  <!-- GAME UI -->
+  <div id="gameContainer" class="app-shell hidden">
     <div class="app-inner">
       <header>
         <div class="title-block">
@@ -136,8 +152,7 @@
       </div>
 
       <footer>
-        <span>Classroom phishing-awareness exercise • Dark mode • GitHub Pages compatible</span>
-        <span>Created for a cybersecurity project</span>
+        <span>A cybersecurity project</span>
       </footer>
     </div>
   </div>
