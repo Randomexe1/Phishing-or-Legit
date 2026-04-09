@@ -1,4 +1,16 @@
 // ------------------------------
+// TITLE SCREEN LOGIC
+// ------------------------------
+const titleScreen = document.getElementById("titleScreen");
+const gameContainer = document.getElementById("gameContainer");
+const startButton = document.getElementById("startButton");
+
+startButton.addEventListener("click", () => {
+  titleScreen.classList.add("hidden");
+  gameContainer.classList.remove("hidden");
+});
+
+// ------------------------------
 // 20-EMAIL QUESTION BANK
 // ------------------------------
 const questions = [
@@ -367,5 +379,5 @@ btnRestart.addEventListener("click", () => {
   initQuiz();
 });
 
-// Start quiz
+// Start quiz immediately after title screen
 initQuiz();
