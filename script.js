@@ -1,22 +1,35 @@
 // ------------------------------
-// TITLE SCREEN LOGIC
+// TITLE & END SCREEN LOGIC
 // ------------------------------
 const titleScreen = document.getElementById("titleScreen");
 const gameContainer = document.getElementById("gameContainer");
+const endScreen = document.getElementById("endScreen");
+
 const startButton = document.getElementById("startButton");
+const playAgainButton = document.getElementById("playAgainButton");
+
+const finalScoreEl = document.getElementById("finalScore");
+const finalTotalEl = document.getElementById("finalTotal");
+const finalAccuracyEl = document.getElementById("finalAccuracy");
 
 startButton.addEventListener("click", () => {
   titleScreen.classList.add("hidden");
+  endScreen.classList.add("hidden");
   gameContainer.classList.remove("hidden");
+  initQuiz();
+});
+
+playAgainButton.addEventListener("click", () => {
+  endScreen.classList.add("hidden");
+  gameContainer.classList.remove("hidden");
+  initQuiz();
 });
 
 // ------------------------------
 // 20-EMAIL QUESTION BANK
 // ------------------------------
 const questions = [
-  // -------------------------
   // 10 LEGITIMATE EMAILS
-  // -------------------------
   {
     from: "IT Support <it-helpdesk@school.edu>",
     time: "8:12 AM",
@@ -108,9 +121,7 @@ const questions = [
     explanation: "A simple schedule update from a known coach."
   },
 
-  // -------------------------
   // 9 OBVIOUS PHISHING EMAILS
-  // -------------------------
   {
     from: "Micorsoft Security Team <security@micorsoft-support.com>",
     time: "6:41 AM",
@@ -193,9 +204,7 @@ const questions = [
     explanation: "Spotify does not use off‑brand billing domains."
   },
 
-  // -------------------------
-  // 1 SUBTLE / HARD‑TO‑SPOT PHISHING EMAIL
-  // -------------------------
+  // 1 SUBTLE / HARD-TO-SPOT PHISHING EMAIL
   {
     from: "School Portal <notifications@school-edu.com>",
     time: "1:22 PM",
@@ -211,7 +220,6 @@ const questions = [
 // ------------------------------
 // QUIZ LOGIC
 // ------------------------------
-
 const emailFromEl = document.getElementById("emailFrom");
 const emailTimeEl = document.getElementById("emailTime");
 const emailSubjectEl = document.getElementById("emailSubject");
@@ -227,18 +235,11 @@ const legitRatioLabelEl = document.getElementById("legitRatioLabel");
 const btnPhishing = document.getElementById("btnPhishing");
 const btnLegit = document.getElementById("btnLegit");
 const btnNext = document.getElementById("btnNext");
-const btnRestart = document.getElementById("btnRestart");
 
 const feedbackEl = document.getElementById("feedback");
 const feedbackIconEl = document.getElementById("feedbackIcon");
 const feedbackTitleEl = document.getElementById("feedbackTitle");
 const feedbackMessageEl = document.getElementById("feedbackMessage");
-
-const summaryCardEl = document.getElementById("summaryCard");
-const summaryTotalEl = document.getElementById("summaryTotal");
-const summaryCorrectEl = document.getElementById("summaryCorrect");
-const summaryAccuracyEl = document.getElementById("summaryAccuracy");
-const summaryFooterEl = document.getElementById("summaryFooter");
 
 let currentIndex = 0;
 let score = 0;
@@ -263,9 +264,7 @@ function initQuiz() {
   scoreDisplayEl.textContent = "0";
   questionTotalEl.textContent = totalQuestions.toString();
   feedbackEl.classList.remove("visible", "correct", "incorrect");
-  summaryCardEl.classList.remove("visible");
   btnNext.style.display = "none";
-  btnRestart.style.display = "none";
   btnPhishing.disabled = false;
   btnLegit.disabled = false;
   updateLegitRatioLabel();
@@ -305,7 +304,8 @@ function showFeedback(isCorrect, explanation) {
   if (currentIndex < totalQuestions - 1) {
     btnNext.style.display = "block";
   } else {
-    btnRestart.style.display = "block";
+    // last question → show end screen
+    showEndScreen();
   }
 
   feedbackEl.classList.add("visible");
@@ -331,27 +331,16 @@ function showFeedback(isCorrect, explanation) {
     emailTagEl.style.color = "#4ade80";
     emailTagEl.style.borderColor = "rgba(34, 197, 94, 0.7)";
   }
-
-  if (currentIndex === totalQuestions - 1) {
-    showSummary();
-  }
 }
 
-function showSummary() {
+function showEndScreen() {
   const accuracy = Math.round((score / totalQuestions) * 100);
-  summaryTotalEl.textContent = totalQuestions;
-  summaryCorrectEl.textContent = score;
-  summaryAccuracyEl.textContent = accuracy + "%";
+  finalScoreEl.textContent = score.toString();
+  finalTotalEl.textContent = totalQuestions.toString();
+  finalAccuracyEl.textContent = accuracy.toString();
 
-  if (accuracy >= 80) {
-    summaryFooterEl.textContent = "Excellent work — your instincts are strong.";
-  } else if (accuracy >= 50) {
-    summaryFooterEl.textContent = "Good start — review the explanations to improve.";
-  } else {
-    summaryFooterEl.textContent = "Replaying the quiz will help you spot more red flags.";
-  }
-
-  summaryCardEl.classList.add("visible");
+  gameContainer.classList.add("hidden");
+  endScreen.classList.remove("hidden");
 }
 
 function handleAnswer(userThinksPhishing) {
@@ -374,10 +363,3 @@ btnNext.addEventListener("click", () => {
     renderQuestion();
   }
 });
-
-btnRestart.addEventListener("click", () => {
-  initQuiz();
-});
-
-// Start quiz immediately after title screen
-initQuiz();
